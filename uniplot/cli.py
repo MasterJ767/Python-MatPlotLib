@@ -1,16 +1,15 @@
 import argparse
-import gzip
-from Bio import SeqIO
+from . import parse
+
+loc = "uniprot_receptor.xml.gz"
 
 def dump(args):
-    handle = gzip.open("uniprot_receptor.xml.gz")
-    for record in SeqIO.parse(handle, "uniprot-xml"):
+    for record in parse.uniprot_seqrecords(loc):
         print(record)
 
 
 def names(args):
-    handle = gzip.open("uniprot_receptor.xml.gz")
-    for record in SeqIO.parse(handle, "uniprot-xml"):
+    for record in parse.uniprot_seqrecords(loc):
         print(record.name)
 
 
@@ -25,7 +24,7 @@ def cli():
     subparsers.add_parser("list").set_defaults(func=names)
 
     # Parse the command line
-    args = parser.parser_args()
+    args = parser.parse_args()
 
-    # Take the func argument, which points to our dunction and call it
+    # Take the func argument, which points to our function and call it.
     args.func(args)

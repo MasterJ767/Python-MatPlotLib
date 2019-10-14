@@ -1,11 +1,31 @@
+import argparse
 import gzip
 from Bio import SeqIO
 
-#for l in gzip.open("uniprot_receptor.xml.gz"):
-    #print(l.decode('utf-8').strip())
-
-
-def cli():
+def dump(args):
     handle = gzip.open("uniprot_receptor.xml.gz")
     for record in SeqIO.parse(handle, "uniprot-xml"):
         print(record)
+
+
+def names(args):
+    handle = gzip.open("uniprot_receptor.xml.gz")
+    for record in SeqIO.parse(handle, "uniprot-xml"):
+        print(record.name)
+
+
+def cli():
+    # Create a new parser
+    parser = argparse.ArgumentParser(prog="uniplot")
+
+    subparsers = parser.add_subparsers(help="Sub Command Help")
+
+    # Add subparsers
+    subparsers.add_parser("dump").set_defaults(func=dump)
+    subparsers.add_parser("list").set_defaults(func=names)
+
+    # Parse the command line
+    args = parser.parser_args()
+
+    # Take the func argument, which points to our dunction and call it
+    args.func(args)

@@ -1,5 +1,8 @@
 from . import parse
 
+loc = "uniprot_receptor.xml.gz"
+
 def average_len(records):
     # Returns the average len for records.
-    return CALCULATE_THE_AVERAGE_HERE
+    for record in parse.uniprot_seqrecords(loc):
+        return len(record)

@@ -1,29 +1,38 @@
 import argparse
 from . import parse
 from . import analysis
+from . import plot
+from . import file_finder
 
-loc = "uniprot_receptor.xml.gz"
+loc = file_finder.find()
 
 
 def dump(args):
-    """Prints the entire contents of the file."""
+    """Print the entire contents of the file."""
     for record in parse.uniprot_seqrecords(loc):
         print(record)
 
 
 def names(args):
-    """Prints the name of each record."""
+    """Print the name of each record."""
     for record in parse.uniprot_seqrecords(loc):
         print(record.name)
 
 
 def average(args):
-    """Prints the average len for records."""
+    """Print the average len for records."""
     print("Average Length is {}".format(
         analysis.average_len(parse.uniprot_seqrecords(loc))))
 
 
+def plot_average_by_taxa(args):
+    """Display bar chart with average len per taxa"""
+    av = analysis.average_len_taxa(parse.uniprot_seqrecords(loc))
+    plot.plot_bar_show(av)
+
+
 def cli():
+    """Add parsing capabilities to the cli"""
     # Create a new parser
     parser = argparse.ArgumentParser(prog="uniplot")
 
@@ -33,6 +42,7 @@ def cli():
     subparsers.add_parser("dump").set_defaults(func=dump)
     subparsers.add_parser("list").set_defaults(func=names)
     subparsers.add_parser("average").set_defaults(func=average)
+    subparsers.add_parser("plot-average-by-taxa").set_defaults(func=plot_average_by_taxa)
 
     # Parse the command line
     args = parser.parse_args()

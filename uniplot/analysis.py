@@ -2,11 +2,12 @@ from functools import reduce
 
 
 def add(x, y):
+    """Add two numbers together"""
     return x + y
 
 
 def average_len(records):
-    """Returns the average len for records."""
+    """Return the average len for records."""
     record_total = len(records)
 
     sequence_lengths = []
@@ -19,7 +20,7 @@ def average_len(records):
 
 
 def average_len_taxa(records):
-    """Returns the average length for the top level taxa"""
+    """Return the average length for the top level taxa"""
     record_by_taxa = {}
     for r in records:
         taxa = r.annotations["taxonomy"][0]

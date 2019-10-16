@@ -2,26 +2,23 @@ import argparse
 from . import parse
 from . import analysis
 
-def loc():
-    loc = "uniprot_receptor.xml.gz"
-    #loc = "./resources/uniprot_sprot_small.xml.gz"
-    return loc
+loc = "uniprot_receptor.xml.gz"
 
 def dump(args):
     """Prints the entire contents of the file."""
-    for record in parse.uniprot_seqrecords(loc()):
+    for record in parse.uniprot_seqrecords(loc):
         print(record)
 
 
 def names(args):
     """Prints the name of each record."""
-    for record in parse.uniprot_seqrecords(loc()):
+    for record in parse.uniprot_seqrecords(loc):
         print(record.name)
 
 def average(args):
     """Prints the average len for records."""
     print("Average Length is {}".format(
-        analysis.average_len(parse.uniprot_seqrecords(loc()))))
+        analysis.average_len(parse.uniprot_seqrecords(loc))))
 
 
 def cli():

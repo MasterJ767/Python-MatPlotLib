@@ -2,7 +2,8 @@ import pytest
 import uniplot.analysis
 import uniplot.parse
 
-TEST_UNIPROT="./resource/uniprot_sprot_small.xml.gz"
+TEST_UNIPROT = "./resource/uniprot_sprot_small.xml.gz"
+
 
 def test_average():
     assert uniplot.analysis.average_len(

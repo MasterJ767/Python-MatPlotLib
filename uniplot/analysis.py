@@ -8,8 +8,8 @@ def average_len(records):
     record_total = len(records)
 
     sequence_lengths = []
-    for record in records:
-        sequence = len(record)
+    for r in records:
+        sequence = len(r)
         sequence_lengths.append(sequence)
         sequence_total = reduce(add,sequence_lengths)
 

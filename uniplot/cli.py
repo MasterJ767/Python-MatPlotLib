@@ -27,7 +27,7 @@ def average(args):
 
 def plot_average_by_taxa(args):
     """Display bar chart with average len per taxa"""
-    av = analysis.average_len_taxa(parse.uniprot_seqrecords(loc))
+    av = analysis.average_len_taxa(parse.uniprot_seqrecords(loc), depth)
     plot.plot_bar_show(av)
 
 
@@ -42,7 +42,7 @@ def cli():
     subparsers.add_parser("dump").set_defaults(func=dump)
     subparsers.add_parser("list").set_defaults(func=names)
     subparsers.add_parser("average").set_defaults(func=average)
-    subparsers.add_parser("plot-average-by-taxa").set_defaults(func=plot_average_by_taxa)
+    subparsers.add_parser("plot").set_defaults(func=plot_average_by_taxa)
 
     # Parse the command line
     args = parser.parse_args()

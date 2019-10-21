@@ -36,13 +36,16 @@ def cli():
     # Create a new parser
     parser = argparse.ArgumentParser(prog="uniplot")
 
-    subparsers = parser.add_subparsers(help="Sub Command Help")
+    subparsers = parser.add_subparsers(help="Sub Command Help:")
 
     # Add subparsers
-    subparsers.add_parser("dump").set_defaults(func=dump)
-    subparsers.add_parser("list").set_defaults(func=names)
-    subparsers.add_parser("average").set_defaults(func=average)
-    subparsers.add_parser("plot").add_argument("--depth",,type=int,default=0).set_defaults(func=plot_average_by_taxa)
+    subparsers.add_parser("dump", help="This will return all information about all protein chains.").set_defaults(
+        func=dump)
+    subparsers.add_parser("list", help="This will return the names of each protein chain.").set_defaults(func=names)
+    subparsers.add_parser("average", help="This will return the average length of a protein chain.").set_defaults(
+        func=average)
+    subparsers.add_parser("plot", help="This will display a bar chart which represents the average length of protein "
+                                       "chains by the highest taxonomic rank.").set_defaults(func=plot_average_by_taxa)
 
     # Parse the command line
     args = parser.parse_args()

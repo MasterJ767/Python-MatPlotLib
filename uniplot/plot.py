@@ -28,6 +28,7 @@ def plot_pie_show(d):
 
     fig1, ax1 = plt.subplots()
     ax1.pie(sizes, labels=labels, autopct='%1.1f%%', shadow=True)
-    ax1.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
+    # Equal aspect ratio ensures that pie is drawn as a circle.
+    ax1.axis('equal')
 
     plt.show()

@@ -4,36 +4,36 @@ from . import analysis
 from . import plot
 from . import file_finder
 
-loc = file_finder.find()
+file_location = file_finder.find()
 
 
 def dump(args):
     """Print the entire contents of the file."""
-    for record in parse.uniprot_seqrecords(loc):
+    for record in parse.uniprot_seqrecords(file_location):
         print(record)
 
 
 def names(args):
     """Print the name of each record."""
-    for record in parse.uniprot_seqrecords(loc):
+    for record in parse.uniprot_seqrecords(file_location):
         print(record.name)
 
 
 def average(args):
     """Print the average len for records."""
     print("Average Length is {}".format(
-        analysis.average_len(parse.uniprot_seqrecords(loc))))
+        analysis.average_len(parse.uniprot_seqrecords(file_location))))
 
 
 def plot_average_by_taxa_bar(args):
     """Display bar chart with average len per taxa"""
-    av = analysis.average_len_taxa(parse.uniprot_seqrecords(loc))
+    av = analysis.average_len_taxa(parse.uniprot_seqrecords(file_location))
     plot.plot_bar_show(av)
 
 
 def plot_average_by_taxa_pie(args):
     """Display pie chart with average len per taxa"""
-    av = analysis.average_len_taxa(parse.uniprot_seqrecords(loc))
+    av = analysis.average_len_taxa(parse.uniprot_seqrecords(file_location))
     plot.plot_pie_show(av)
 
 
@@ -47,7 +47,8 @@ def cli():
     # Add subparsers
     subparsers.add_parser("dump", help="This will return all information about all protein chains.").set_defaults(
         func=dump)
-    subparsers.add_parser("list", help="This will return the names of each protein chain.").set_defaults(func=names)
+    subparsers.add_parser("list", help="This will return the names of each protein chain.").set_defaults(
+        func=names)
     subparsers.add_parser("average", help="This will return the average length of a protein chain.").set_defaults(
         func=average)
     subparsers.add_parser("plot-bar", help="This will display a bar chart which represents the average length of "

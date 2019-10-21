@@ -14,5 +14,7 @@ Use the following commands in the terminal to make use of the program:
 
 - `python uniplot.py average` - This will return the average length of a protein chain.
 
-- `python uniplot.py plot` - This will display a bar chart which represents the average length of 
+- `python uniplot.py plot-bar` - This will display a bar chart which represents the average length of 
 protein chains by the highest taxonomic rank. 
+
+- `python uniplot.py plot-pie`

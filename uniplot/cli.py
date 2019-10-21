@@ -25,10 +25,16 @@ def average(args):
         analysis.average_len(parse.uniprot_seqrecords(loc))))
 
 
-def plot_average_by_taxa(args):
+def plot_average_by_taxa_bar(args):
     """Display bar chart with average len per taxa"""
-    av = analysis.average_len_taxa(parse.uniprot_seqrecords(loc), )
+    av = analysis.average_len_taxa(parse.uniprot_seqrecords(loc))
     plot.plot_bar_show(av)
+
+
+def plot_average_by_taxa_pie(args):
+    """Display pie chart with average len per taxa"""
+    av = analysis.average_len_taxa(parse.uniprot_seqrecords(loc))
+    plot.plot_pie_show(av)
 
 
 def cli():
@@ -44,8 +50,12 @@ def cli():
     subparsers.add_parser("list", help="This will return the names of each protein chain.").set_defaults(func=names)
     subparsers.add_parser("average", help="This will return the average length of a protein chain.").set_defaults(
         func=average)
-    subparsers.add_parser("plot", help="This will display a bar chart which represents the average length of protein "
-                                       "chains by the highest taxonomic rank.").set_defaults(func=plot_average_by_taxa)
+    subparsers.add_parser("plot-bar", help="This will display a bar chart which represents the average length of "
+                                           "protein chains by the highest taxonomic rank.").set_defaults(
+        func=plot_average_by_taxa_bar)
+    subparsers.add_parser("plot-pie", help="This will display a pie chart which represents the average length of "
+                                           "protein chains by the highest taxonomic rank.").set_defaults(
+        func=plot_average_by_taxa_pie)
 
     # Parse the command line
     args = parser.parse_args()

@@ -17,4 +17,7 @@ Use the following commands in the terminal to make use of the program:
 - `python uniplot.py plot-bar` - This will display a bar chart which represents the average length of 
 protein chains by the highest taxonomic rank. 
 
-- `python uniplot.py plot-pie`
+- `python uniplot.py plot-pie` - This will display a pie chart which represents the average length of 
+protein chains by the highest taxonomic rank. 
+
+Using `python uniplot.py --help` or `python uniplot.py -h` will display the information above in the terminal.

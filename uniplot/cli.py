@@ -27,14 +27,14 @@ def average(args):
 
 def plot_average_by_taxa_bar(args):
     """Display bar chart with average len per taxa"""
-    depth = int(input("How many taxa deep would you like the graph to display? "))
+    depth = int(input("Enter a taxa depth (0 - 20): "))
     av = analysis.average_len_taxa(parse.uniprot_seqrecords(file_location), depth)
     plot.plot_bar_show(av)
 
 
 def plot_average_by_taxa_pie(args):
     """Display pie chart with average len per taxa"""
-    depth = int(input("How many taxa deep would you like the graph to display? "))
+    depth = int(input("Enter a taxa depth (0 - 20): "))
     av = analysis.average_len_taxa(parse.uniprot_seqrecords(file_location), depth)
     plot.plot_pie_show(av)
 

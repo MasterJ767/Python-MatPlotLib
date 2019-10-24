@@ -26,7 +26,7 @@ def average_len_taxa(records, depth):
         try:
             r.annotations["taxonomy"][depth]
         except IndexError:
-            print("Does not exist")
+            print("Out of range")
         else:
             taxa = r.annotations["taxonomy"][depth]
             record_by_taxa.setdefault(taxa, []).append(r)

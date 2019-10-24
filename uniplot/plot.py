@@ -16,19 +16,3 @@ def plot_bar_show(d):
     plt.tight_layout()
     # Show the graph
     plt.show()
-
-
-def plot_pie_show(d):
-    """Create pie chart"""
-    labels = d.keys()
-    sizes = []
-    for i in d:
-        size = d.values()/len(d)
-        sizes.append(size)
-
-    fig1, ax1 = plt.subplots()
-    ax1.pie(sizes, labels=labels, autopct='%1.1f%%', shadow=True)
-    # Equal aspect ratio ensures that pie is drawn as a circle.
-    ax1.axis('equal')
-
-    plt.show()

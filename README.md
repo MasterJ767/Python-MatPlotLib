@@ -1,7 +1,8 @@
 CSC1034: Practical 2
 ====================
 
-This package allows analysis and display of proteins from Uniprot.
+This package allows analysis and display of proteins from the 'uniprot_receptor.xml.gz' file.
+
 
 How to use:
 -----------
